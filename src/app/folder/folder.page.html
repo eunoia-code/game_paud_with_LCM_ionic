@@ -1,0 +1,40 @@
+<ion-header [translucent]="false">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-icon class="my-nav-icon" name="Home"></ion-icon>
+      <ion-title>Paud Gaming</ion-title>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-icon class="my-nav-icon icon-end" name="ellipsis-vertical-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="main-bg">
+  <!-- <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{ folder }}</ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+
+  <div id="container">
+
+    <ion-grid>
+      <ion-row>
+        <ion-col *ngFor="let p of appPages; let i = index" size="6">
+          <div class="kotak" (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]">
+            <div class="img-box">
+              <img src="../../assets/icon/{{p.icon}}" class="img-embed-responsive" alt="{{p.title}}"> <br>
+            </div>
+            <div class="title-box">
+              {{p.title}}
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <!-- <strong class="capitalize">{{ folder }}</strong>
+    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p> -->
+  </div>
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "abdi",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

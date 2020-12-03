@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-icon (click)="backToHome()" name="arrow-back"></ion-icon>
+      <img src="../../../assets/icon/score.svg" class="img-embed-responsive img-icon" alt="">
+      <ion-title>SKOR</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <ion-grid>
+      <!-- menu -->
+      <div *ngIf="menu==''">
+        <ion-row class="menu" *ngFor="let menu of scoreMenus" (click)="choosenMenu(menu.url)">
+          <ion-col size="2">
+            <img src="../../../assets/icon/{{menu.icon}}" class="img-embed-responsive" alt="{{menu.title}}"> <br>
+          </ion-col>
+          <ion-col size="10">
+            <span class="menu-text"> {{menu.title}} </span>
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <!-- top score -->
+      <ion-row *ngIf="bestScoresList.length > 0 && menu!==''">
+        <ion-col size="12" *ngFor="let player of bestScoresList  | slice:0:10; let index=index">
+          <div class="player-score">
+            {{index+1}}. {{player.name | uppercase}}, Skor: {{player.score}}
+            <img src="../../../assets/icon/crown.svg" alt="juara" class="best-player" *ngIf="index==0">
+          </div>
+        </ion-col>
+        <ion-col size="6">
+        </ion-col>
+        <ion-col size="6">
+          <div class="back-button" (click)="backToScoreMenu()">
+            <ion-icon name="arrow-back-outline"></ion-icon> Kembali
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <!-- no top score -->
+      <ion-row *ngIf="!bestScoresList.length && menu!==''">
+        <ion-col size="12">
+          <div class="players-not-found">
+            TIDAK ADA DAFTAR SKOR PEMAIN
+          </div>
+        </ion-col>
+        <ion-col size="6">
+        </ion-col>
+        <ion-col size="6">
+          <div class="back-button" (click)="backToScoreMenu()">
+            <ion-icon name="arrow-back"></ion-icon> Kembali
+          </div>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </div>
+</ion-content>
